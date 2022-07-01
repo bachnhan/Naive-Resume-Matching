@@ -70,3 +70,23 @@ jd_database = pd.DataFrame(Jd, columns=[
                            "Name", "Context", "Cleaned", "Selective", "Selective_Reduced", "TF_Based"])
 
 jd_database.to_csv("Job_Data.csv", index=False)
+
+def run():
+    resume_dir = "Data/Resumes/"
+    job_desc_dir = "Data/JobDesc/"
+    resume_names = os.listdir(resume_dir)
+    job_description_names = os.listdir(job_desc_dir)
+
+    document = []
+    document = read_resumes(resume_names, resume_dir)
+    Doc = get_cleaned_words(document)
+    Database = pd.DataFrame(document, columns=[
+                            "Name", "Context", "Cleaned", "Selective", "Selective_Reduced", "TF_Based"])
+    Database.to_csv("Resume_Data.csv", index=False)
+    
+    job_document = []
+    job_document = read_jobdescriptions(job_description_names, job_desc_dir)
+    Jd = get_cleaned_words(job_document)
+    jd_database = pd.DataFrame(Jd, columns=[
+                           "Name", "Context", "Cleaned", "Selective", "Selective_Reduced", "TF_Based"])
+    jd_database.to_csv("Job_Data.csv", index=False)
