@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import Similar
 from PIL import Image
 import time
-
+import fileReader
 
 image = Image.open('Images//logo.png')
 st.image(image, use_column_width=True)
@@ -21,6 +21,7 @@ st.title("Resume Matcher")
 
 
 # Reading the CSV files prepared by the fileReader.py
+fileReader.run()
 Resumes = pd.read_csv('Resume_Data.csv')
 Jobs = pd.read_csv('Job_Data.csv')
 
